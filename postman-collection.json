@@ -1,0 +1,575 @@
+{
+  "info": {
+    "name": "Billetera Virtual API",
+    "description": "Colección completa de endpoints para el sistema de billetera virtual",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearer_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "database_url",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "bearer_token",
+      "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5Y2Y3Mi1hNzFjLTcyMjctYTM0NS1hYThjMzQ2Mzk2YWYiLCJqdGkiOiIzOGU2NWE1MTNhMWMzZmYzNGExYzhiMWJjYzlmNmNlYmYxMWVlMzk4NGE0YzA0NGQ1OTFmYWZjZjI3ODZiMzgxZWFlMTEwMmM0NTJiMTEzNSIsImlhdCI6MTc2MTczOTM3My41NTI2ODcsIm5iZiI6MTc2MTczOTM3My41NTI2ODgsImV4cCI6MTc2MTgyNTc3My41NDg3NTEsInN1YiI6IjAxOTljZjcyLTJhNjItNzNjYi05MWQ0LWE5NGE5ZWU4YjVlMCIsInNjb3BlcyI6WyJjYW1iaWFyLXJlcXVlcmltaWVudG8tZXN0YWRvLWEtcGVuZGllbnRlLnJlcXVlcmltaWVudG8iLCJjYW1iaWFyLXJlcXVlcmltaWVudG8tYS1kaXNwb25pYmxlLXBhcmEtYXVkaXRhci5yZXF1ZXJpbWllbnRvIiwiY2FtYmlhci1yZXF1ZXJpbWllbnRvLWVzdGFkby1lbi1yZXZpc2lvbi5yZXF1ZXJpbWllbnRvIiwiY2FtYmlhci1yZXF1ZXJpbWllbnRvLWVzdGFkby1jb24tb2JzZXJ2YWNpb25lcy5yZXF1ZXJpbWllbnRvIiwiY2FtYmlhci1yZXF1ZXJpbWllbnRvLWVzdGFkby1hLXZhbGlkYWRvLnJlcXVlcmltaWVudG8iLCJjYW1iaWFyLXJlcXVlcmltaWVudG8tZXN0YWRvLWEtYXByb2JhZG8ucmVxdWVyaW1pZW50byIsImNhbWJpYXItcmVxdWVyaW1pZW50by1lc3RhZG8tYS1yZWNoYXphZG8ucmVxdWVyaW1pZW50byIsImVsaW1pbmFyLXJlcXVlcmltaWVudG8tY2FyZ2Fkby5yZXF1ZXJpbWllbnRvIiwiZW50cmVnYXItZG9jdW1lbnRhY2lvbi5yZXF1ZXJpbWllbnRvIiwiZW1pdGlyLW9ic2VydmFjaW9uLWRvY3VtZW50by5yZXF1ZXJpbWllbnRvIiwiYXByb2Jhci1kb2N1bWVudG8ucmVxdWVyaW1pZW50byIsImFzaWduYXItcmVxdWVyaW1pZW50by5yZXF1ZXJpbWllbnRvIiwibGlzdGFyLnJlcXVlcmltaWVudG8iLCJ2ZXIucmVxdWVyaW1pZW50byIsImNhbWJpYXItb2JzZXJ2YWNpb24tZXN0YWRvLWEtcGVuZGllbnRlLm9ic2VydmFjaW9uZXMiLCJjYW1iaWFyLW9ic2VydmFjaW9uLWVzdGFkby1hLWNhcmdhZG8ub2JzZXJ2YWNpb25lcyIsImNhbWJpYXItb2JzZXJ2YWNpb24tZXN0YWRvLWEtYXByb2JhZG8ub2JzZXJ2YWNpb25lcyIsImNhbWJpYXItb2JzZXJ2YWNpb24tZXN0YWRvLWEtcmVjaGF6YWRvLm9ic2VydmFjaW9uZXMiLCJyZXZlcnRpci1vYnNlcnZhY2lvbi1hLXBlbmRpZW50ZS5vYnNlcnZhY2lvbmVzIiwiZWxpbWluYXItb2JzZXJ2YWNpb24ub2JzZXJ2YWNpb25lcyIsImVkaXRhci1vYnNlcnZhY2lvbi5vYnNlcnZhY2lvbmVzIiwiY2FtYmlhci1kb2N1bWVudG8tY2FyZ2Fkby1lc3RhZG8tYS1wZW5kaWVudGUuZG9jdW1lbnRvLWNhcmdhZG8iLCJjYW1iaWFyLWRvY3VtZW50by1jYXJnYWRvLWVzdGFkby1hLWNhcmdhZG8uZG9jdW1lbnRvLWNhcmdhZG8iLCJjYW1iaWFyLWRvY3VtZW50by1jYXJnYWRvLWVzdGFkby1lbi1yZXZpc2lvbi5kb2N1bWVudG8tY2FyZ2FkbyIsImNhbWJpYXItZG9jdW1lbnRvLWNhcmdhZG8tZXN0YWRvLWNvbi1vYnNlcnZhY2lvbmVzLmRvY3VtZW50by1jYXJnYWRvIiwiY2FtYmlhci1kb2N1bWVudG8tY2FyZ2Fkby1lc3RhZG8tYS1hcHJvYmFkby5kb2N1bWVudG8tY2FyZ2FkbyIsImNhbWJpYXItZG9jdW1lbnRvLWNhcmdhZG8tZXN0YWRvLWEtcmVjaGF6YWRvLmRvY3VtZW50by1jYXJnYWRvIiwiZWxpbWluYXItZG9jdW1lbnRvLWNhcmdhZG8uZG9jdW1lbnRvLWNhcmdhZG8iLCJsaXN0YXIuc2luZGljYXRvcyIsImNyZWFyLnNpbmRpY2F0b3MiLCJlZGl0YXIuc2luZGljYXRvcyIsImVsaW1pbmFyLnNpbmRpY2F0b3MiLCJ2ZXIuc2luZGljYXRvcyIsInJlZ2lzdHJhci1lbGVjY2lvbi5zaW5kaWNhdG9zIiwibGlzdGFyLnNpbmRpY2F0by1kaXJlY3RpdmEiLCJjcmVhci5zaW5kaWNhdG8tZGlyZWN0aXZhIiwiZWRpdGFyLnNpbmRpY2F0by1kaXJlY3RpdmEiLCJlbGltaW5hci5zaW5kaWNhdG8tZGlyZWN0aXZhIiwibGlzdGFyLmluc3RydW1lbnRvcy1jb2xlY3Rpdm9zIiwiY3JlYXIuaW5zdHJ1bWVudG9zLWNvbGVjdGl2b3MiLCJlZGl0YXIuaW5zdHJ1bWVudG9zLWNvbGVjdGl2b3MiLCJlbGltaW5hci5pbnN0cnVtZW50b3MtY29sZWN0aXZvcyIsImNhcmdhci5pbnN0cnVtZW50b3MtY29sZWN0aXZvcyIsInZlci5pbnN0cnVtZW50b3MtY29sZWN0aXZvcyIsImxpc3Rhci5mdWVyemEtbGFib3JhbCIsImNyZWFyLmZ1ZXJ6YS1sYWJvcmFsIiwiZWRpdGFyLmZ1ZXJ6YS1sYWJvcmFsIiwiZWxpbWluYXIuZnVlcnphLWxhYm9yYWwiLCJsaXN0YXIuam9ybmFkYXMtZXhjZXBjaW9uYWxlcyIsImNyZWFyLmpvcm5hZGFzLWV4Y2VwY2lvbmFsZXMiLCJlZGl0YXIuam9ybmFkYXMtZXhjZXBjaW9uYWxlcyIsImVsaW1pbmFyLmpvcm5hZGFzLWV4Y2VwY2lvbmFsZXMiLCJsaXN0YXIudXN1YXJpb3MiLCJ2ZXIudXN1YXJpb3MiLCJjcmVhci51c3VhcmlvcyIsImVkaXRhci51c3VhcmlvcyIsImVsaW1pbmFyLnVzdWFyaW9zIiwiYWN0aXZhci51c3VhcmlvcyIsImRlc2FjdGl2YXIudXN1YXJpb3MiLCJhc2lnbmFyLXJvbC51c3VhcmlvcyIsImxpc3Rhci5tb2R1bG9zIiwidmVyLm1vZHVsb3MiLCJjcmVhci5tb2R1bG9zIiwiZWRpdGFyLm1vZHVsb3MiLCJlbGltaW5hci5tb2R1bG9zIl19.M1JjYikAA6t5q3kP_4LCDS-n0k_PdH6IBW5kG3MpfsqXa2-DcKZflypTbhO6PUPzY0epc8ClBeejVDYmUc9yrNrZ_yfj9mv6SKudPcC51fl9ForMGEZ2S2ae5U49zY2l6JrURz9XsOMfnfglSl-Puo8IX86zjiqr0jAhr7y7xxfBdV3_3fRRIOggI4DDAiwSFFkKcp-1zO8QLpizN_gKHDrz1WyqxxKKOq6MrXK_zvXn5nJ5pAoDZN04BPH7OH0kidOhWSRq6-oANa9Kb7x25j2us9wABl_k4_PeB5ZAnEXGZyYffj4ZgV6TjgXITahgjT8vp7VBVSnTJqWWWvSpxHkK5cY7iYc2QOP9e45FVVsQfJ46OSsWSF6jvxXn0sxj8yNYfKNCOPYqsMvbbcFRZmQgmpnj6-5r2nqei16_Dg7DPqXxjqmIRS_W-wpXvGiKDpitc9anhsH7XvVOjGWq_DnZGkTm3sqZuGgwlF-laZNOvOC68op-EgN5UbafoKiUfq9Q0W5jJPJ9mtwMvFOV7u7UXGpDA0R-mSzHQCOQUlDsD2r_hMBN7ZYRUpIgJcqVfAMX_bDr24fn7jQJPRV8dL3Olwje98kCKmwQrqjnfwoncZCvUtz_PS8vaxXmCwkm71cJEQbvdGpycDpVZWUNEKzE0_oN0CYUnx1D8Nyuzx4",
+      "type": "string"
+    },
+    {
+      "key": "client_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "session_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "payment_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Sistema",
+      "item": [
+        {
+          "name": "Health Check - API Gateway",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            }
+          }
+        },
+        {
+          "name": "Health Check - Database Service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{database_url}}/api/health",
+              "host": ["{{database_url}}"],
+              "path": ["api", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "Crear Cliente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data && response.data.id) {",
+                  "        pm.collectionVariables.set('client_id', response.data.id);",
+                  "        console.log('Client ID guardado:', response.data.id);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documento\": \"12345678\",\n  \"nombres\": \"Juan Carlos\",\n  \"email\": \"juan.carlos@test.com\",\n  \"celular\": \"3001234567\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clients/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "{{client_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Cliente por Documento",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clients/document/12345678",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "document", "12345678"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Juan Carlos Actualizado\",\n  \"email\": \"juan.actualizado@test.com\",\n  \"celular\": \"3009876543\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clients/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "{{client_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Billeteras",
+      "item": [
+        {
+          "name": "Consultar Saldo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/wallets/balance/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "balance", "{{client_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Recargar Billetera",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"{{client_id}}\",\n  \"amount\": 100000,\n  \"description\": \"Recarga inicial de prueba\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/wallets/recharge",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "recharge"]
+            }
+          }
+        },
+        {
+          "name": "Historial de Transacciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/wallets/transactions/{{client_id}}?page=1&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "transactions", "{{client_id}}"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "type",
+                  "value": "recarga",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pagos",
+      "item": [
+        {
+          "name": "Iniciar Pago",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data && response.data.sessionId) {",
+                  "        pm.collectionVariables.set('session_id', response.data.sessionId);",
+                  "        console.log('Session ID guardado:', response.data.sessionId);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"{{client_id}}\",\n  \"amount\": 50000,\n  \"description\": \"Pago de prueba\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/payments/initiate",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "initiate"]
+            }
+          }
+        },
+        {
+          "name": "Obtener Tokens del Cliente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data && response.data.tokens && response.data.tokens.length > 0) {",
+                  "        const activeToken = response.data.tokens.find(t => t.status === 'activo');",
+                  "        if (activeToken) {",
+                  "            pm.collectionVariables.set('payment_token', activeToken.token);",
+                  "            console.log('Token guardado:', activeToken.token);",
+                  "        }",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/payments/tokens/client/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "tokens", "client", "{{client_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Confirmar Pago",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"{{session_id}}\",\n  \"token\": \"{{payment_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/payments/confirm",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "confirm"]
+            }
+          }
+        },
+        {
+          "name": "Limpiar Tokens Expirados",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/payments/tokens/cleanup",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "tokens", "cleanup"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flujo Completo",
+      "item": [
+        {
+          "name": "1. Crear Cliente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Cliente creado exitosamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data).to.have.property('id');",
+                  "    pm.collectionVariables.set('client_id', response.data.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documento\": \"87654321\",\n  \"nombres\": \"María González\",\n  \"email\": \"maria.gonzalez@test.com\",\n  \"celular\": \"3007654321\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients"]
+            }
+          }
+        },
+        {
+          "name": "2. Recargar Billetera",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Recarga exitosa', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data.newBalance).to.equal(150000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"{{client_id}}\",\n  \"amount\": 150000,\n  \"description\": \"Recarga para flujo completo\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/wallets/recharge",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "recharge"]
+            }
+          }
+        },
+        {
+          "name": "3. Iniciar Pago",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Pago iniciado exitosamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data).to.have.property('sessionId');",
+                  "    pm.collectionVariables.set('session_id', response.data.sessionId);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"{{client_id}}\",\n  \"amount\": 75000,\n  \"description\": \"Pago del flujo completo\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/payments/initiate",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "initiate"]
+            }
+          }
+        },
+        {
+          "name": "4. Obtener Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Token obtenido exitosamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data.tokens).to.be.an('array');",
+                  "    const activeToken = response.data.tokens.find(t => t.status === 'activo');",
+                  "    pm.expect(activeToken).to.not.be.undefined;",
+                  "    pm.collectionVariables.set('payment_token', activeToken.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/payments/tokens/client/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "tokens", "client", "{{client_id}}"]
+            }
+          }
+        },
+        {
+          "name": "5. Confirmar Pago",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Pago confirmado exitosamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data.newBalance).to.equal(75000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"{{session_id}}\",\n  \"token\": \"{{payment_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/payments/confirm",
+              "host": ["{{base_url}}"],
+              "path": ["api", "payments", "confirm"]
+            }
+          }
+        },
+        {
+          "name": "6. Verificar Saldo Final",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Saldo actualizado correctamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data.balance).to.equal(75000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/wallets/balance/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "balance", "{{client_id}}"]
+            }
+          }
+        },
+        {
+          "name": "7. Ver Historial Completo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Historial obtenido correctamente', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "    const response = pm.response.json();",
+                  "    pm.expect(response.success).to.be.true;",
+                  "    pm.expect(response.data.transactions).to.be.an('array');",
+                  "    pm.expect(response.data.transactions.length).to.equal(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/wallets/transactions/{{client_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "wallets", "transactions", "{{client_id}}"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
